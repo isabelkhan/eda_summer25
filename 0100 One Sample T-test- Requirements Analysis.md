@@ -48,9 +48,9 @@ A one-sample t-test can be used in clinical trial data to compare a sample mean 
 
 ## Hypotheses
 
-Let μ<sub>0 denote the **hypothesized population mean**. 
-- Null Hypothesis (H<sub>0): the sample mean (μ) is equal to the hypothesized population mean (μ = μ<sub>0)
-- Alternative Hypothesis (H<sub>A): the sample mean (μ) is **EITHER** not equal to the hypothesized population mean (μ ≠ μ<sub>0)* **OR** greater/less than the hypothesized population mean (μ > μ<sub>0 OR (μ <> μ<sub>0)**
+Let μ<sub>0</sub> denote the **hypothesized population mean**. 
+- Null Hypothesis (H<sub>0</sub>): the sample mean (μ) is equal to the hypothesized population mean (μ = μ<sub>0</sub>)
+- Alternative Hypothesis (H<sub>A</sub>): the sample mean (μ) is **EITHER** not equal to the hypothesized population mean (μ ≠ μ<sub>0</sub>)* **OR** greater/less than the hypothesized population mean (μ > μ<sub>0</sub>) OR (μ <> μ<sub>0</sub>)**
 
 * this is called a one-sided t-test 
 ** this is called a two-sided t-test
