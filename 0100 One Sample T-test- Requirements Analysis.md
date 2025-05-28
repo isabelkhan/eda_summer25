@@ -68,7 +68,7 @@ A one-sample t-test is a statistical method used to determine whether the mean o
 
 ### Limitations/Notes
 
---
+---
 ## R (stats)
 
 ### Function/Procedure 
@@ -82,7 +82,7 @@ A one-sample t-test is a statistical method used to determine whether the mean o
 
 ### Limitations/Notes
 
---
+---
 ## Python (scipy.stats)
 
 ### Function/Procedure 
@@ -96,7 +96,7 @@ A one-sample t-test is a statistical method used to determine whether the mean o
 
 ### Limitations/Notes
 
---
+---
 
 # Summary
 
