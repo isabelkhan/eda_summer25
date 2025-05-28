@@ -35,7 +35,7 @@
 
 # Background
 
-A one-sample t-test is a statistical method used to determine whether the mean of a single sample significantly differs from a known or hypothesized population mean. 
+A one-sample t-test is a statistical method used to determine whether the **mean of a single sample significantly differs from a known or hypothesized population mean**. 
 
 This test is useful when the standard deviation of the population is unknown and when the sample size is small to moderate (<30).
 
