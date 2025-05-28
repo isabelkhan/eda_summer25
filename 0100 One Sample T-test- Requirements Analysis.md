@@ -57,6 +57,9 @@ Let μ<sub>0</sub> denote the **hypothesized population mean**.
 
 
 ## Assumptions
+- data is independent and identically distributed (**i.i.d**)
+- underlying population is approximately **normally distributed** 
+- variable is measured on a **continous** scale 
 
 ## Test Statistic & P-value
 
