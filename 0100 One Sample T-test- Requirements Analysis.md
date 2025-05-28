@@ -8,7 +8,7 @@ tags: [TAP, Python]
 
 ---
 
-- [0100 - OneSampleTTest - Requirements Analysis](#0100---OneSampleTTest---requirements-analysis)
+- [0100 - OneSampleTTest - Requirements Analysis](#0100---OneSampleTTest---Requirements-Analysis)
 - [Background](#background)
   - [Hypotheses](#hypotheses)
   - [Assumptions](#assumptions)
