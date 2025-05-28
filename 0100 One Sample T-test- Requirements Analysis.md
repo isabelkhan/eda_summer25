@@ -62,8 +62,17 @@ Let μ<sub>0</sub> denote the **hypothesized population mean**.
 - variable is measured on a **continous** scale 
 
 ## Test Statistic & P-value
+**T statistic**: 
 
-[Include formula for Q, assumptions for Chi-squared or F-distribution based on sample size.]
+t = (μ - μ<sub>0</sub>)/(s/√n)
+where 
+-  μ: sample mean 
+- μ<sub>0</sub>: hypothesized population mean 
+- s: sample standard deviation 
+- n: sample size 
+
+all t-statistics follow a t-distribution with n-1 degrees of freedom
+(you can lookup the p-value using the t-statistic and degrees of freedom in a **t-distribution table**)
 
 # Package Implementations
 
