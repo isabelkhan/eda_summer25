@@ -1,8 +1,3 @@
----
-title: '[0100] One Sample T-test'
-tags: [TAP, Python]
-
----
 
 # [0100] One Sample T-Test - Requirements Analysis
 
