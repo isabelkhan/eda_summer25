@@ -8,7 +8,7 @@ tags: [TAP, Python]
 
 ---
 
-#Background
+[#Background
 ##Hypotheses
 ##Assumptions
 ##Test Statistic & P-value
@@ -32,7 +32,7 @@ tags: [TAP, Python]
 ###Sample Code
 ###Limitations / Notes
 #Summary
-#References
+#References]
 
 ---
 
