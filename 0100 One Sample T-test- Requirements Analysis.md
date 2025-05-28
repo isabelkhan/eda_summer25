@@ -4,11 +4,35 @@ tags: [TAP, Python]
 
 ---
 
-# [0100] One Sample T-test
+# [0100] One Sample T-Test - Requirements Analysis
 
 ---
 
-[toc]
+#Background
+##Hypotheses
+##Assumptions
+##Test Statistic & P-value
+#Package Implementations
+##SAS (FREQ)
+###Function / Procedure
+###Inputs
+###Outputs
+###Sample Code
+###Limitations / Notes
+##R (stats)
+###Function / Procedure
+###Inputs
+###Outputs
+###Sample Code
+###Limitations / Notes
+##Python (pingouin)
+###Function / Procedure
+###Inputs
+###Outputs
+###Sample Code
+###Limitations / Notes
+#Summary
+#References
 
 ---
 
