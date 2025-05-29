@@ -10,11 +10,11 @@
   - [Test Statistic & P-value](#test-statistic--p-value)
 - [Package Implementations](#package-implementations)
   - [SAS (TTEST)](#sas-ttest)
-    - [Function/Procedure](#functionprocedure)
-    - [Inputs](#inputs)
-    - [Outputs](#outputs)
-    - [Sample Code](#sample-code)
-    - [Limitations / Notes](#limitations--notes)
+    - [Function/Procedure (SAS)](#functionprocedure-SAS)
+    - [Inputs (SAS)](#inputs-SAS)
+    - [Outputs (SAS)](#outputs-SAS)
+    - [Sample Code (SAS)](#sample-code-SAS)
+    - [Limitations/Notes (SAS)](#limitationsnotes-SAS)
   - [R (stats)](#r-stats)
     - [Function/Procedure](#functionprocedure)
     - [Inputs](#inputs)
@@ -78,10 +78,10 @@ All t-statistics follow a t-distribution with n-1 degrees of freedom
 
 ## SAS (TTEST)
 
-### Function/Procedure 
+### Function/Procedure (SAS) 
 Use `PROC TTEST` function from `STAT` module. 
 
-### Inputs 
+### Inputs (SAS)
 - **Required**: 
     - `DATA=` (name of dataset)
     - `VAR=` (variable name for t-test)
@@ -99,7 +99,7 @@ Use `PROC TTEST` function from `STAT` module.
     - `BYVAR=`(groups results by variables specified in PAIRED or VAR)
     - `NOBYVAR=` (groups results by tables)
 
-### Outputs
+### Outputs (SAS)
 - T-statistic 
 - P-value 
 - Confidence Interval 
@@ -111,7 +111,7 @@ Use `PROC TTEST` function from `STAT` module.
 - For lognormal data: coefficient of variation
 
 
-### Sample Code
+### Sample Code (SAS)
 
 ```sas
 proc ttest data=read h0=30;
@@ -119,7 +119,7 @@ proc ttest data=read h0=30;
 run;
 ```
 
-### Limitations/Notes
+### Limitations/Notes (SAS)
 - Null hypothesis defaults to `0` 
 - Alternative hypothesis is two-sided by default (`SIDES = 2`)
 - Automatically excludes missing data 
@@ -129,10 +129,10 @@ run;
 ---
 ## R (stats)
 
-### Function/Procedure 
+### Function/Procedure (R)
 Use `t.test` from base R `stats` package. 
 
-### Inputs 
+### Inputs (R)
 - **Required**: 
     - `x` (numeric vector of data)
     - `mu` (hypothesized mean)
@@ -148,7 +148,7 @@ Use `t.test` from base R `stats` package.
     - `na.action` (a function which indicates what should happen when the data contain NAs)
     - `na.rm` (`True`/`False` True instructs functions to remove missing values)
 
-### Outputs
+### Outputs (R)
 - T-statistic
 - Degrees of freedom 
 - P-value 
@@ -161,12 +161,12 @@ Use `t.test` from base R `stats` package.
 - data.name (character string giving the name(s) of the data)
 
 
-### Sample Code
+### Sample Code (R)
 ```r
 t.test(read$score, mu = 30)
 ```
 
-### Limitations/Notes
+### Limitations/Notes (R)
 - Null hypothesis/hypothesized mean (mu) defaults to `0` 
 - Alternative hypothesis is `two.sided` by default 
 - Confidence level is `0.95` by default 
@@ -175,10 +175,10 @@ t.test(read$score, mu = 30)
 ---
 ## Python (scipy.stats)
 
-### Function/Procedure 
+### Function/Procedure (Python)
 Use `scipy.stats.ttest_1samp` from `scipy` package 
 
-### Inputs 
+### Inputs (Python)
 - **Required**: 
     - `a` (sample data array)
     - `popmean` (population mean to test against)
@@ -188,14 +188,14 @@ Use `scipy.stats.ttest_1samp` from `scipy` package
     - `nan_policy` (how to handle NaN (‘propagate’, ‘omit’ or ‘raise’))
     - `keepdims` (if `True`, axes which are reduced are left in the result as dimensions with size one, the result will broadcast correctly against input array)
 
-### Outputs
+### Outputs (Python)
 - T-statistic 
 - P-value 
 - Degrees of freedom 
 - Confidence interval 
 
 
-### Sample Code
+### Sample Code (Python)
 ```python
 import pandas as pd
 from scipy import stats
@@ -205,8 +205,10 @@ sample_mean = df['score'].mean()
 null_mean = 30  # Hypothetical null hypothesis mean for comparison
 alpha = 0.05  # Significance level
 
+#getting t statistic & p-value 
 t_statistic, p_value = stats.ttest_1samp(df['score'], null_mean)
 
+#formatting printed output 
 print(f"t: {t_statistic}")
 print(f"p-value: {p_value}")
 print(f"mean of x: {sample_mean}")
@@ -217,8 +219,8 @@ else:
     print("Fail to reject null hypothesis: There is no significant difference.")
 ```
 
-### Limitations/Notes
-- Population mean **must be specified**
+### Limitations/Notes (Python)
+- Population mean **must be specified** (if array_like, then its length along axis must equal 1, and it must otherwise be broadcastable with a)
 - Alternative hypothesis is `two-sided` by default 
 - Confidence level is `0.95` by default (alpha = 0.05)
 - Axis defaults to `0`
