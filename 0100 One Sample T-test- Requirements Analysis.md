@@ -57,9 +57,9 @@ Let μ<sub>0</sub> denote the **hypothesized population mean**.
 
 
 ## Assumptions
-- data is independent and identically distributed (**i.i.d**)
-- underlying population is approximately **normally distributed** 
-- variable is measured on a **continous** scale 
+- Data is independent and identically distributed (**i.i.d**)
+- Underlying population is approximately **normally distributed** 
+- Variable is measured on a **continous** scale 
 
 ## Test Statistic & P-value
 **T statistic**: 
@@ -71,7 +71,7 @@ where
 - s: sample standard deviation 
 - n: sample size 
 
-all t-statistics follow a t-distribution with n-1 degrees of freedom
+All t-statistics follow a t-distribution with n-1 degrees of freedom
 (you can lookup the p-value using the t-statistic and degrees of freedom in a **t-distribution table**)
 
 # Package Implementations
@@ -120,10 +120,10 @@ run;
 ```
 
 ### Limitations/Notes
-- null hypothesis defaults to `0` 
-- alternative hypothesis is two-sided by default (`SIDES = 2`)
-- automatically excludes missing data 
-- alpha is `0.05` by default for 95% CI
+- Null hypothesis defaults to `0` 
+- Alternative hypothesis is two-sided by default (`SIDES = 2`)
+- Automatically excludes missing data 
+- Alpha is `0.05` by default for 95% CI
 - `DIST=` should be set to `normal`
 
 ---
@@ -167,9 +167,9 @@ t.test(read$score, mu = 30)
 ```
 
 ### Limitations/Notes
-- null hypothesis/hypothesized mean (mu) defaults to `0` 
-- alternative hypothesis is `two.sided` by default 
-- confidence level is `0.95` by default 
+- Null hypothesis/hypothesized mean (mu) defaults to `0` 
+- Alternative hypothesis is `two.sided` by default 
+- Confidence level is `0.95` by default 
 - `paired` should be set to `False`
 
 ---
@@ -218,19 +218,19 @@ else:
 ```
 
 ### Limitations/Notes
-- population mean **must be specified**
-- alternative hypothesis is `two-sided` by default 
-- confidence level is `0.95` by default (alpha = 0.05)
-- axis defaults to `0`
-- keepdims defaults to `False`
+- Population mean **must be specified**
+- Alternative hypothesis is `two-sided` by default 
+- Confidence level is `0.95` by default (alpha = 0.05)
+- Axis defaults to `0`
+- Keepdims defaults to `False`
 
 ---
 
 # Summary
-- data must be approximately normally distributed 
-- null and alterntive hypotheses must be specified the same acoss R, SAS, and Python to produce the same output 
-- confidence levels must also be specified the same way across R, SAS, and Python to produce the same output 
-- data should be measured on a continous scale and be independent and identically distributed
+- Data must be approximately normally distributed 
+- Null and alterntive hypotheses must be specified the same acoss R, SAS, and Python to produce the same output 
+- Confidence levels must also be specified the same way across R, SAS, and Python to produce the same output 
+- Data should be measured on a continous scale and be independent and identically distributed
 
 # References
 - CAMIS Project: https://psiaims.github.io/CAMIS/
