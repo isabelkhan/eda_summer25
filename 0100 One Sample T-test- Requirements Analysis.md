@@ -79,13 +79,31 @@ all t-statistics follow a t-distribution with n-1 degrees of freedom
 ## SAS (TTEST)
 
 ### Function/Procedure 
-[Insert function or procedure used.]
+Use `PROC TTEST` function from `STAT` module. 
 
 ### Inputs 
+- **Required**: `DATA=`, `VAR=`, `H0=`, `SIDES=`, `ALPHA=`, `DIST= normal`
+- **Optional**: `ORDER=`, `TEST=`, `TOST=`, `CI=`, `COCHRAN=`, `PLOT=`, `BYVAR=`, `NOBYVAR=`
 
 ### Outputs
+- T-statistic 
+- P-value 
+- Confidence Interval 
+- Degrees of Freedom
+- Mean 
+- Min & max
+- Std. Deviation
+- SE (std error) 
+- For lognormal data: coefficient of variation
+
 
 ### Sample Code
+
+```sas
+proc ttest data=read h0=30;
+     var score;
+  run;
+```
 
 ### Limitations/Notes
 
