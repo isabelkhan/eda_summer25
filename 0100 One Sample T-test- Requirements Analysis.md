@@ -10,7 +10,7 @@
   - [Test Statistic & P-value](#test-statistic--p-value)
 - [Package Implementations](#package-implementations)
   - [SAS (TTEST)](#sas-ttest)
-    - [Function / Procedure](#function--procedure)
+    - [Function/Procedure](#function/procedure)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
     - [Sample Code](#sample-code)
@@ -132,8 +132,20 @@ run;
 Use `t.test` from base R `stats` package. 
 
 ### Inputs 
-- **Required**: `x`, `mu`, `alternative`, `paired = False`, `conf.level`
-- **Optional**: `y`, `var.equal`, `formula`, `data`, `subset`, `na.action`, `na.rm`
+- **Required**: 
+    - `x` (numeric vector of data)
+    - `mu` (hypothesized mean)
+    - `alternative` (`two-sided`, `less`, or `greater` specifies one-sided v two-sided test)
+    - `paired = False` (logical indicating if you want a paired t-test)
+    - `conf.level` (confidence level)
+- **Optional**: 
+    - `y` (optional non-empty numerical vector of data values)
+    - `var.equal` (logical indicating whether to treat two variances as equal)
+    - `formula` ( a formula of the form lhs ~ rhs where lhs is a numeric variable giving the data values and rhs a factor with two levels giving the corresponding groups)
+    - `data` (an optional matrix or data frame containing the variables in the formula)
+    - `subset` (an optional vector specifying a subset of observations to be used)
+    - `na.action` (a function which indicates what should happen when the data contain NAs)
+    - `na.rm` (`True`/`False` True instructs functions to remove missing values)
 
 ### Outputs
 - T-statistic
@@ -156,7 +168,7 @@ t.test(read$score, mu = 30)
 ```
 
 ### Limitations/Notes
-- null hypothesis defaults to 0 
+- null hypothesis/hypothesized mean (mu) defaults to 0 
 - alternative hypothesis is two sided by default 
 - confidence level is 0.95 by default 
 
@@ -207,6 +219,9 @@ else:
 ---
 
 # Summary
+- data must be approximately normally distributed 
+- null and alterntive hypotheses must be specified the same acoss R, SAS, and Python to produce the same output 
+- confidence levels must also be specified the same way across R, SAS, and Python to produce the same output 
 
 # References
 - CAMIS Project: https://psiaims.github.io/CAMIS/
