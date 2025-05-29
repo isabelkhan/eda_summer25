@@ -102,38 +102,93 @@ Use `PROC TTEST` function from `STAT` module.
 ```sas
 proc ttest data=read h0=30;
      var score;
-  run;
+run;
 ```
 
 ### Limitations/Notes
+- null hypothesis defaults to 0 
+- alternative hypothesis is two-sided by default 
+- automatically excludes missing data 
+- alpha is 0.05 by default for 95% CI
 
 ---
 ## R (stats)
 
 ### Function/Procedure 
-[Insert function or procedure used.]
+Use `t.test` from base R `stats` package. 
 
 ### Inputs 
+- **Required**: `x`, `mu`, `alternative`, `paired = False`, `conf.level`
+- **Optional**: `y`, `var.equal`, `formula`, `data`, `subset`, `na.action`, `na.rm`
 
 ### Outputs
+- T-statistic
+- Degrees of freedom 
+- P-value 
+- Confidence Interval 
+- Estimated mean
+- Null.value (specified hypothesized value of the mean)
+- Std error (standard error of the mean (difference), used as denominator in the t-statistic formula)
+- Alternative (a character string describing the alternative hypothesis) 
+- method(a character string indicating what type of t-test was performed)
+- data.name (character string giving the name(s) of the data)
+- St dev (procs) 
+- Min & max (using procs) 
+
 
 ### Sample Code
+```r
+t.test(read$score, mu = 30)
+```
 
 ### Limitations/Notes
+- null hypothesis defaults to 0 
+- alternative hypothesis is two sided by default 
+- confidence level is 0.95 by default 
 
 ---
 ## Python (scipy.stats)
 
 ### Function/Procedure 
-[Insert function or procedure used.]
+Use `scipy.stats.ttest_1samp` from `scipy` package 
 
 ### Inputs 
+- **Required**: `a`, `popmean`, `alternative`
+- **Optional**: `axis`, `nan_policy`, `keepdims`
 
 ### Outputs
+- T-statistic 
+- P-value 
+- Degrees of freedom 
+- Confidence interval 
+
 
 ### Sample Code
+```python
+import pandas as pd
+from scipy import stats
+
+# Perform one-sample t-test
+sample_mean = df['score'].mean()
+null_mean = 30  # Hypothetical null hypothesis mean for comparison
+alpha = 0.05  # Significance level
+
+t_statistic, p_value = stats.ttest_1samp(df['score'], null_mean)
+
+print(f"t: {t_statistic}")
+print(f"p-value: {p_value}")
+print(f"mean of x: {sample_mean}")
+
+if p_value < alpha:
+    print("Reject null hypothesis: There is a significant difference.")
+else:
+    print("Fail to reject null hypothesis: There is no significant difference.")
+```
 
 ### Limitations/Notes
+- population mean must be specified 
+- alternative hypothesis is two-sided by default 
+- confidence level is 0.95 by default (alpha = 0.05)
 
 ---
 
