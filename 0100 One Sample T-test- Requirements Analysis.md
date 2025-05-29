@@ -163,6 +163,17 @@ Use `t.test` from base R `stats` package.
 
 ### Sample Code (R)
 ```r
+# Create sample data
+read <- tibble::tribble(
+  ~score, ~count,
+  40, 2,   47, 2,   52, 2,   26, 1,   19, 2,
+  25, 2,   35, 4,   39, 1,   26, 1,   48, 1,
+  14, 2,   22, 1,   42, 1,   34, 2 ,  33, 2,
+  18, 1,   15, 1,   29, 1,   41, 2,   44, 1,
+  51, 1,   43, 1,   27, 2,   46, 2,   28, 1,
+  49, 1,   31, 1,   28, 1,   54, 1,   45, 1
+)
+#perform t-test
 t.test(read$score, mu = 30)
 ```
 
