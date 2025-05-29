@@ -82,7 +82,12 @@ all t-statistics follow a t-distribution with n-1 degrees of freedom
 Use `PROC TTEST` function from `STAT` module. 
 
 ### Inputs 
-- **Required**: `DATA=` (name of dataset), `VAR=` (variable name for t-test), `H0=` (null hypothesis), `SIDES=` (`2`, `U`, or `L` indicates two-sided vs. one-sided test), `ALPHA=` (significance level), `DIST= normal` (specifies normal v. lognormal data)
+- **Required**: 
+    - `DATA=` (name of dataset)
+    - `VAR=` (variable name for t-test)
+    - `H0=` (null hypothesis)
+    - `SIDES=` (`2`, `U`, or `L` indicates two-sided vs. one-sided test),- `ALPHA=` (significance level)
+    - `DIST= normal` (specifies normal v. lognormal data)
 - **Optional**: `ORDER=`(determines sort order of CLASS or CROSSOVER variable), `TEST=`(specifies test criterion), `TOST=`(requests equivalence test and specifies bounds), `CI=`(requests CI for st dev or coeff of variation), `COCHRAN=`(requests Cochran t-test), `PLOT=`(produces ODS statistical graphics), `BYVAR=`(groups results by variables specified in PAIRED or VAR), `NOBYVAR=` (groups results by tables)
 
 ### Outputs
