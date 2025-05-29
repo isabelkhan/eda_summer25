@@ -120,10 +120,10 @@ run;
 ```
 
 ### Limitations/Notes
-- null hypothesis defaults to 0 
-- alternative hypothesis is two-sided by default 
+- null hypothesis defaults to `0` 
+- alternative hypothesis is two-sided by default (`SIDES = 2`)
 - automatically excludes missing data 
-- alpha is 0.05 by default for 95% CI
+- alpha is `0.05` by default for 95% CI
 
 ---
 ## R (stats)
@@ -168,9 +168,9 @@ t.test(read$score, mu = 30)
 ```
 
 ### Limitations/Notes
-- null hypothesis/hypothesized mean (mu) defaults to 0 
-- alternative hypothesis is two sided by default 
-- confidence level is 0.95 by default 
+- null hypothesis/hypothesized mean (mu) defaults to `0` 
+- alternative hypothesis is `two.sided` by default 
+- confidence level is `0.95` by default 
 
 ---
 ## Python (scipy.stats)
@@ -179,8 +179,14 @@ t.test(read$score, mu = 30)
 Use `scipy.stats.ttest_1samp` from `scipy` package 
 
 ### Inputs 
-- **Required**: `a`, `popmean`, `alternative`
-- **Optional**: `axis`, `nan_policy`, `keepdims`
+- **Required**: 
+    - `a` (sample data array)
+    - `popmean` (population mean to test against)
+    - `alternative` (`two-sided`, `less`, or `greater` for two-sided v. one-sided tests)
+- **Optional**: 
+    - `axis` (axis to compute along(row v. column of data))
+    - `nan_policy` (how to handle NaN (‘propagate’, ‘omit’ or ‘raise’))
+    - `keepdims` (if `True`, axes which are reduced are left in the result as dimensions with size one, the result will broadcast correctly against input array)
 
 ### Outputs
 - T-statistic 
@@ -212,9 +218,11 @@ else:
 ```
 
 ### Limitations/Notes
-- population mean must be specified 
-- alternative hypothesis is two-sided by default 
-- confidence level is 0.95 by default (alpha = 0.05)
+- population mean **must be specified**
+- alternative hypothesis is `two-sided` by default 
+- confidence level is `0.95` by default (alpha = 0.05)
+- axis defaults to `0`
+- keepdims defaults to `False`
 
 ---
 
@@ -222,6 +230,7 @@ else:
 - data must be approximately normally distributed 
 - null and alterntive hypotheses must be specified the same acoss R, SAS, and Python to produce the same output 
 - confidence levels must also be specified the same way across R, SAS, and Python to produce the same output 
+- data should be measured on a continous scale and be independent and identically distributed
 
 # References
 - CAMIS Project: https://psiaims.github.io/CAMIS/
