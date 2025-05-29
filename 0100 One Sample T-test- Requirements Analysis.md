@@ -10,7 +10,7 @@
   - [Test Statistic & P-value](#test-statistic--p-value)
 - [Package Implementations](#package-implementations)
   - [SAS (TTEST)](#sas-ttest)
-    - [Function/Procedure](#function/procedure)
+    - [Function/Procedure](#functionprocedure)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
     - [Sample Code](#sample-code)
