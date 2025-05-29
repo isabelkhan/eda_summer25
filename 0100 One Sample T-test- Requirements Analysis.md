@@ -159,8 +159,6 @@ Use `t.test` from base R `stats` package.
 - Alternative (a character string describing the alternative hypothesis) 
 - method(a character string indicating what type of t-test was performed)
 - data.name (character string giving the name(s) of the data)
-- St dev (procs) 
-- Min & max (using procs) 
 
 
 ### Sample Code
