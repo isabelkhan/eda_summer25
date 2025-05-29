@@ -114,7 +114,7 @@ Use `PROC TTEST` function from `STAT` module.
 ### Sample Code (SAS)
 
 ```sas
-#data 
+*data;
 data read;
     input score count @@;
     datalines;
@@ -126,7 +126,7 @@ data read;
 49 1   31 1   28 1   54 1   45 1
 ;
 
-#perform t-test
+*perform t-test;
 proc ttest data=read h0=30;
      var score;
 run;
