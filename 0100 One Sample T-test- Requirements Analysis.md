@@ -114,6 +114,19 @@ Use `PROC TTEST` function from `STAT` module.
 ### Sample Code (SAS)
 
 ```sas
+#data 
+data read;
+    input score count @@;
+    datalines;
+40 2   47 2   52 2   26 1   19 2
+25 2   35 4   39 1   26 1   48 1
+14 2   22 1   42 1   34 2   33 2
+18 1   15 1   29 1   41 2   44 1
+51 1   43 1   27 2   46 2   28 1
+49 1   31 1   28 1   54 1   45 1
+;
+
+#perform t-test
 proc ttest data=read h0=30;
      var score;
 run;
@@ -173,6 +186,7 @@ read <- tibble::tribble(
   51, 1,   43, 1,   27, 2,   46, 2,   28, 1,
   49, 1,   31, 1,   28, 1,   54, 1,   45, 1
 )
+
 #perform t-test
 t.test(read$score, mu = 30)
 ```
@@ -210,6 +224,14 @@ Use `scipy.stats.ttest_1samp` from `scipy` package
 ```python
 import pandas as pd
 from scipy import stats
+
+# Create sample data
+data = {
+    'score': [40, 47, 52, 26, 19, 25, 35, 39, 26, 48, 14, 22, 42, 34, 33, 18, 15, 29, 41, 44, 51, 43, 27, 46, 28, 49, 31, 28, 54, 45],
+    'count': [2, 2, 2, 1, 2, 2, 4, 1, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
 
 # Perform one-sample t-test
 sample_mean = df['score'].mean()
