@@ -195,3 +195,7 @@ else:
 # Summary
 
 # References
+- CAMIS Project: https://psiaims.github.io/CAMIS/
+- R `t.test` Documentation: https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test 
+- SAS `PROC TTEST` Documentation: https://documentation.sas.com/doc/en/statug/15.2/statug_ttest_syntax01.htm 
+- Python `scipy.stats.ttest_1samp` Documentation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html 
