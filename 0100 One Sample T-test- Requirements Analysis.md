@@ -124,6 +124,7 @@ run;
 - alternative hypothesis is two-sided by default (`SIDES = 2`)
 - automatically excludes missing data 
 - alpha is `0.05` by default for 95% CI
+- `DIST=` should be set to `normal`
 
 ---
 ## R (stats)
@@ -171,6 +172,7 @@ t.test(read$score, mu = 30)
 - null hypothesis/hypothesized mean (mu) defaults to `0` 
 - alternative hypothesis is `two.sided` by default 
 - confidence level is `0.95` by default 
+- `paired` should be set to `False`
 
 ---
 ## Python (scipy.stats)
