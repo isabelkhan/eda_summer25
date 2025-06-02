@@ -1,4 +1,5 @@
 # [0100] One Sample T-Test - Design
+This checklist outlines the design plan to evaluate the consistency and correctness of One Sample T-tests across R, SAS, and Python implementations. Each section defines input design, statistical agreement thresholds, expected outputs, and known tool-specific limitations.
 
 ---
 
