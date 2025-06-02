@@ -6,7 +6,7 @@ This checklist details the design plan for assessing the consistency and accurac
 - [0100 One Sample T-Test - Design](#0100-One-Sample-TTest---Design)
 - [Input Dataset](#input-dataset)
 - [Agreement Criteria](#agreement-criteria)
-- [Expectations for Supported Statistic](#expectations-for-supported-statistic)
+- [Expectations for Supported Statistics](#expectations-for-supported-statistics)
 - [Function Usage and Critical Arguments](#function-usage-and-critical-arguments)
 - [Known Incompatibilities](#known-incompatibilities)
 - [Comparison Protocol and Metrics](#comparison-protocol-and-metrics)
@@ -21,7 +21,7 @@ Select or synthesize input dataset
 # Agreement Criteria 
 T statistic and p-value should have an absolute difference of <0.000001 across R, SAS, and Python for numeric agreement. 
 
-# Expectations for Supported Statistic
+# Expectations for Supported Statistics
 R, SAS, and Python should output consistent values for: 
 - Confidence Interval (abs diff < 0.0001)
 - Degrees of Freedom (should be the same across all outputs)
