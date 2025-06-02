@@ -22,7 +22,14 @@ Select or synthesize input dataset
 T statistic and p-value should have an absolute difference of <0.000001 across R, SAS, and Python for numeric agreement. 
 
 # Expectations for Supported Statistic
-Document expectations for each supported statistic (mean, total, etc.)
+R, SAS, and Python should output consistent values for: 
+- Confidence Interval (abs diff < 0.0001)
+- Degrees of Freedom (should be the same across all outputs)
+- Mean (abs diff < 0.0001)
+- Min & Max 
+- Standard Deviation 
+- Standard Error 
+- Agreement w/null hypothesis (should be the same across all outputs)
 
 # Function Usage and Critical Arguments 
 Record function usage and critical arguments (e.g., svydesign())
