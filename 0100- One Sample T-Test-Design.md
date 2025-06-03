@@ -33,8 +33,11 @@ R, SAS, and Python should output consistent values for:
 
 # Function Usage and Critical Arguments 
 - **R**: use `t.test` with args `x`, `mu`, `alternative`, `paired = False`, and `conf.level` specified 
+    - notes that `paired = False` should be set as we are only focusing on one sample t-tests not paired t-tests
 - **SAS**: use `PROC TTEST` with args `DATA=`, `VAR=`, `H0=`, `SIDES=`, `ALPHA=`, and `DIST= normal` specified
-- **Python**: use `scipy.stats.ttest_1samp` with args `a`, `popmean`, and `alternative` specified 
+- **Python**: use `scipy.stats.ttest_1samp` with args `a`, `popmean`, `alternative`, and `confidence_level` specified 
+
+In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided test or not, and the confidence level should be specified to ensure numeric agreement across all functions. 
 
 # Known Incompatibilities 
 - R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data 
