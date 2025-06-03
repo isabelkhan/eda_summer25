@@ -24,12 +24,10 @@ T statistic and p-value should have an absolute difference of <0.000001 across R
 # Expectations for Supported Statistics
 R, SAS, and Python should output consistent values for: 
 - Confidence Interval (abs diff < 0.0001)
-- Degrees of Freedom (should be the same across all outputs)
+- Degrees of Freedom (should be the exact same across all outputs)
 - Mean (abs diff < 0.0001)
-- Min & Max 
-- Standard Deviation 
-- Standard Error 
-- Agreement w/null hypothesis (should be the same across all outputs)
+- Standard Error (abs diff < 0.0001)
+- Agreement w/null hypothesis (should be the exact same across all outputs)
 
 # Function Usage and Critical Arguments 
 - **R**: use `t.test` with args `x`, `mu`, `alternative`, `paired = False`, and `conf.level` specified 
