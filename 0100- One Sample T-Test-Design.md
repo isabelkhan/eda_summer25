@@ -1,5 +1,5 @@
 # [0100] One Sample T-Test - Design
-This checklist details the design plan for assessing the consistency and accuracy of One Sample T-test implementations across R, SAS, and Python. Each section specifies input parameters, statistical agreement criteria, expected results, and known tool-specific limitations.
+This following details the design plan for assessing the consistency and accuracy of One Sample T-test implementations across R, SAS, and Python. Each section specifies input parameters, statistical agreement criteria, expected results, and known tool-specific limitations.
 
 ---
 # Table of Contents 
