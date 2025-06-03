@@ -32,10 +32,13 @@ R, SAS, and Python should output consistent values for:
 - Agreement w/null hypothesis (should be the same across all outputs)
 
 # Function Usage and Critical Arguments 
-Record function usage and critical arguments (e.g., svydesign())
+- **R**: use `t.test` with args `x`, `mu`, `alternative`, `paired = False`, and `conf.level` specified 
+- **SAS**: use `PROC TTEST` with args `DATA=`, `VAR=`, `H0=`, `SIDES=`, `ALPHA=`, and `DIST= normal` specified
+- **Python**: use `scipy.stats.ttest_1samp` with args `a`, `popmean`, and `alternative` specified 
 
 # Known Incompatibilities 
-Identify known incompatibilities (e.g., Python lacks quantile support)
+- R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data 
+- 
 
 # Comparison Protocol and Metrics 
 Outline comparison protocol and metrics

@@ -239,7 +239,9 @@ null_mean = 30  # Hypothetical null hypothesis mean for comparison
 alpha = 0.05  # Significance level
 
 #getting t statistic & p-value 
-t_statistic, p_value = stats.ttest_1samp(df['score'], null_mean)
+result = stats.ttest_1samp(df['score'], null_mean)
+t_statistic, p_value = result 
+confidence_interval= result.confidence_interval(confidence_level = 0.95)
 
 #formatting printed output 
 print(f"t: {t_statistic}")
