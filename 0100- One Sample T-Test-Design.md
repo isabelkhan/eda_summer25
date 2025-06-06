@@ -40,7 +40,7 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
 
 # Known Incompatibilities 
 - R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data 
-- 
+- SAS automatically excludes missing data, while R defaults to `getOption("na.action")` where `na.action` is a globally defined variable that dictates how to handle missing values (which might be defined differently tha omitting missing data), python defaults `nan_policy` to `propagate`
 
 # Comparison Protocol and Metrics 
 Outline comparison protocol and metrics
