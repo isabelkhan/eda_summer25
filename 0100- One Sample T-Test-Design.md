@@ -40,7 +40,24 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
 
 # Known Incompatibilities 
 - R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data 
-- SAS automatically excludes missing data, while R defaults to `getOption("na.action")` where `na.action` is a globally defined variable that dictates how to handle missing values (which might be defined differently tha omitting missing data), python defaults `nan_policy` to `propagate`
+- For NaNs (Non numbers): 
+    - SAS automatically excludes missing data
+    - R defaults to `getOption("na.action")` where `na.action` is a globally defined variable that dictates how to handle missing values (which might be defined differently than omitting missing data)
+    - Python defaults `nan_policy` to `propagate`
+- Inputs: 
+    - R takes vectors as an input 
+    - SAS expects datasets or variables specified in PROC 
+    - Python works on numpy arrays/lists 
+- Outputs:
+    - R returns the statistic, p-value, and CI 
+    - SAS produces detailed tables 
+    - Python outputs the statistic, p-value, and CI (with aux functions)
+- Handling zero variance: 
+    - R: produces warning or NA 
+    - SAS: produces error 
+    - Python: produces nan or raises warning 
+
+Summary: Formatting might not align perfectly, inputs may need to be manipulated slightly for each language and outputs won't be identical but should produce the same numeric values as long as how to handle nans and zero variances are specified (additionally null hypothesis, one-sided tests, and confidence level should be specified the same across all languages).  
 
 # Comparison Protocol and Metrics 
 Outline comparison protocol and metrics
@@ -49,3 +66,4 @@ Outline comparison protocol and metrics
 Upload design notes and dataset
 
 # References 
+- Requirements Analysis for One Sample T-Test: https://github.com/isabelkhan/eda_summer25/blob/main/0100%20One%20Sample%20T-test-%20Requirements%20Analysis.md#inputs 
