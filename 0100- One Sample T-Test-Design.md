@@ -60,7 +60,7 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
 **Summary:** Formatting might not align perfectly, inputs may need to be manipulated slightly for each language and outputs won't be identical but should produce the same numeric values as long as how to handle `NaNs` and zero variances are specified (additionally null hypothesis, one-sided tests, and confidence level should be specified the same across all languages if they are not default values).  
 
 # 6. Comparison Protocol and Metrics 
-Compare input and output formatting and note differences. Compare the numeric output values of the statistic, p-value, CI, degrees of freedom, mean, and standard error across R, Python, and SAS and note if they are greater than the absolute difference thershold specified in parts 2 & 3 of Design outline. 
+Compare input and output formatting across R, Python, and SAS and note differences. Compare the numeric output values of the statistic, p-value, CI, degrees of freedom, mean, and standard error across R, Python, and SAS and note if they are greater than the absolute difference thershold specified in parts 2 & 3 of the design outline. 
 
 # 7. Design Notes and Dataset 
 Upload design notes and dataset
