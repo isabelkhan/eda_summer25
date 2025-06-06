@@ -39,11 +39,11 @@ R, SAS, and Python should output consistent values for:
 In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided test or not, and the confidence level should be specified to ensure numeric agreement across all functions. 
 
 # Known Incompatibilities 
-- R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data 
+- R & Python don't support useage of lognormal data, however t-tests generally assume normal distribution of data so there is no need to test on lognormal data distributions 
 - For NaNs (Non numbers): 
     - SAS automatically excludes missing data
     - R defaults to `getOption("na.action")` where `na.action` is a globally defined variable that dictates how to handle missing values (which might be defined differently than omitting missing data)
-    - Python defaults `nan_policy` to `propagate`
+    - Python defaults `nan_policy` to `propagate` where corresponding entry of output will be a `NaN`
 - Inputs: 
     - R takes vectors as an input 
     - SAS expects datasets or variables specified in PROC 
@@ -53,11 +53,11 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
     - SAS produces detailed tables 
     - Python outputs the statistic, p-value, and CI (with aux functions)
 - Handling zero variance: 
-    - R: produces warning or NA 
+    - R: produces warning or `NaN` 
     - SAS: produces error 
-    - Python: produces nan or raises warning 
+    - Python: produces `NaN` or raises warning 
 
-Summary: Formatting might not align perfectly, inputs may need to be manipulated slightly for each language and outputs won't be identical but should produce the same numeric values as long as how to handle nans and zero variances are specified (additionally null hypothesis, one-sided tests, and confidence level should be specified the same across all languages).  
+**Summary:** Formatting might not align perfectly, inputs may need to be manipulated slightly for each language and outputs won't be identical but should produce the same numeric values as long as how to handle `NaNs` and zero variances are specified (additionally null hypothesis, one-sided tests, and confidence level should be specified the same across all languages if they are not default values).  
 
 # Comparison Protocol and Metrics 
 Outline comparison protocol and metrics
