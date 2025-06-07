@@ -30,6 +30,7 @@
     - [Limitations/Notes (Python)](#limitationsnotes-python)
 - [Summary](#summary)
 - [References](#references)
+- [Further Reading] (#further-reading)
 
 
 ---
@@ -277,3 +278,6 @@ else:
 - R `t.test` Documentation: https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test 
 - SAS `PROC TTEST` Documentation: https://documentation.sas.com/doc/en/statug/15.2/statug_ttest_syntax01.htm 
 - Python `scipy.stats.ttest_1samp` Documentation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html 
+
+#Further Reading 
+- Further Information Regarding T-Tests: https://www.jmp.com/en/statistics-knowledge-portal/t-test 
