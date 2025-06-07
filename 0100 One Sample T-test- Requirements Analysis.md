@@ -279,5 +279,5 @@ else:
 - SAS `PROC TTEST` Documentation: https://documentation.sas.com/doc/en/statug/15.2/statug_ttest_syntax01.htm 
 - Python `scipy.stats.ttest_1samp` Documentation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html 
 
-#Further Reading 
+# Further Reading 
 - Further Information Regarding T-Tests: https://www.jmp.com/en/statistics-knowledge-portal/t-test 
