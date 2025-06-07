@@ -30,7 +30,7 @@
     - [Limitations/Notes (Python)](#limitationsnotes-python)
 - [Summary](#summary)
 - [References](#references)
-- [Further Reading] (#further-reading)
+- [Further Reading](#further-reading)
 
 
 ---
