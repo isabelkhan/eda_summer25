@@ -7,7 +7,8 @@
 - [Background](#background)
   - [Hypotheses](#hypotheses)
   - [Assumptions](#assumptions)
-  - [Test Statistic & P-value](#test-statistic--p-value)
+  - [Results](#results)
+    - [Test Statistic & P-value](#test-statistic--p-value)
 - [Package Implementations](#package-implementations)
   - [SAS (TTEST)](#sas-ttest)
     - [Function/Procedure (SAS)](#functionprocedure-SAS)
@@ -61,7 +62,9 @@ Let μ<sub>0</sub> denote the **hypothesized population mean**.
 - Underlying population is approximately **normally distributed** 
 - Variable is measured on a **continous** scale 
 
-## Test Statistic & P-value
+## Results 
+
+### Test Statistic & P-value
 **T statistic**: 
 
 t = (μ - μ<sub>0</sub>)/(s/√n)
