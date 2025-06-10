@@ -21,13 +21,19 @@ Select or synthesize input dataset
 # 2. Agreement Criteria 
 T statistic and p-value should have an absolute difference of <0.000001 across R, SAS, and Python for numeric agreement. 
 
+**Justification:** An absolute difference threshold of 1e-6 was selected to allow for minor computational differences in floating-point arithmetic and algorithm implementations across platforms while still ensuring statistical equivalence.
+
 # 3. Expectations for Supported Statistics
 R, SAS, and Python should output consistent values for: 
-- Confidence Interval (abs diff < 0.0001)
+- Confidence Interval (abs diff < 0.000001)
 - Degrees of Freedom (should be the exact same across all outputs)
-- Mean (abs diff < 0.0001)
-- Standard Error (abs diff < 0.0001)
+- Mean (abs diff < 0.000001)
+- Standard Error (abs diff < 0.000001)
 - Agreement w/null hypothesis (should be the exact same across all outputs)
+
+**Reasoning:**
+- There is no official SAS-stated threshold, but user-space discussions acknowledge and utilize numerical tolerance.
+- In regulated pharma validation, tolerances of ~1e-6 are common benchmarks used in SOPs to assess parity between software outputs.
 
 # 4. Function Usage and Critical Arguments 
 - **R**: use `t.test` with args `x`, `mu`, `alternative`, `paired = False`, and `conf.level` specified 
