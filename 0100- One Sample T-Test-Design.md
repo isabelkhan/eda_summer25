@@ -73,3 +73,4 @@ Upload design notes and dataset
 
 # 8. References 
 - Requirements Analysis for One Sample T-Test: https://github.com/isabelkhan/eda_summer25/blob/main/0100%20One%20Sample%20T-test-%20Requirements%20Analysis.md#inputs 
+- Public Discussion about Tolerance Checks: https://communities.sas.com/t5/SAS-Programming/How-to-check-variables-for-equality-within-tolerance-niether/td-p/234678?utm_source=chatgpt.com 
