@@ -16,7 +16,45 @@ This following details the design plan for assessing the consistency and accurac
 ---
 
 # 1. Input Dataset 
-Select or synthesize input dataset 
+Sample Code to Generate Dataset: 
+
+```Python
+import numpy as np
+import pandas as pd
+import random
+from datetime import datetime, timedelta
+
+np.random.seed(42)
+
+# Settings
+n = 50  # number of patients
+mean_sbp = 122  # shifted slightly to test significance
+std_dev = 5
+
+# Generate synthetic SBP readings
+sbp = np.random.normal(loc=mean_sbp, scale=std_dev, size=n).round(1)
+
+# Assign Subject IDs
+subject_ids = [f"CAMIS-PT-{i:03}" for i in range(1, n+1)]
+
+# Generate analysis dates (e.g., Oct 1, 2024)
+base_date = datetime(2024, 10, 1)
+analysis_dates = [base_date + timedelta(days=random.randint(0, 5)) for _ in range(n)]
+
+# Create DataFrame in ADaM BDS format
+df = pd.DataFrame({
+    "USUBJID": subject_ids,
+    "PARAMCD": ["SBP"] * n,
+    "PARAM": ["Systolic Blood Pressure"] * n,
+    "AVAL": sbp,
+    "AVALC": sbp.astype(str),
+    "ADT": [d.strftime('%Y-%m-%d') for d in analysis_dates],
+    "ASEQ": list(range(1, n+1)),
+    "ANL01FL": ["Y"] * n
+})
+
+df.head()
+```
 
 # 2. Agreement Criteria 
 T statistic and p-value should have an absolute difference of <0.000001 across R, SAS, and Python for numeric agreement. 
