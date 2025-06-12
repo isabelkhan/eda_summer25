@@ -16,6 +16,11 @@ This following details the design plan for assessing the consistency and accurac
 ---
 
 # 1. Input Dataset 
+
+**Disclaimer:** The dataset used in this study is fictional. The subject IDs and blood pressure measurements are not associated with any real study. Any similarity within this dataset to any actual people is purely coincidental.
+
+**Dataset Hypothetical Scenario:** Clinical trial collecting systolic blood pressure (SBP) measurements for 50 patients. Goal is to verify whether the average SBP differs significantly from a population value (e.g., 120 mmHg).
+
 Sample Code to Generate Dataset: 
 
 ```Python
@@ -55,6 +60,11 @@ df = pd.DataFrame({
 
 df.head()
 ```
+
+How To Run One Sample T-Tests In: 
+- Python: `scipy.stats.ttest_1samp(df["AVAL"], popmean=120)`
+- R: `t.test(df$AVAL, mu = 120)`
+- SAS: `PROC TTEST DATA=read H0=120; VAR AVAL; RUN;`
 
 # 2. Agreement Criteria 
 T statistic and p-value should have an absolute difference of <0.000001 across R, SAS, and Python for numeric agreement. 
