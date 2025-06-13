@@ -117,7 +117,7 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
 Compare input and output formatting across R, Python, and SAS and note differences. Compare the numeric output values of the statistic, p-value, CI, degrees of freedom, mean, and standard error across R, Python, and SAS and note if they are greater than the absolute difference thershold specified in parts 2 & 3 of the design outline. 
 
 # 7. Design Notes and Dataset 
-[one_sample_ttest_clinical_data.csv](./one_sample_ttest_clinical_data.csv)
+[one_sample_ttest_clinical_data.csv](./one_sample_ttest_clinical_data.csv) 
 
 # 8. References 
 - Requirements Analysis for One Sample T-Test: https://github.com/isabelkhan/eda_summer25/blob/main/0100%20One%20Sample%20T-test-%20Requirements%20Analysis.md#inputs 
