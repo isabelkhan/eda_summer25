@@ -21,48 +21,42 @@ This following details the design plan for assessing the consistency and accurac
 
 **Dataset Hypothetical Scenario:** Clinical trial collecting systolic blood pressure (SBP) measurements for 50 patients. Goal is to verify whether the average SBP differs significantly from a population value (e.g., 120 mmHg).
 
-**Sample Code to Generate Dataset:**
+**Sample Code to Generate Raw Dataset:**
 
 ```Python
 import numpy as np
 import pandas as pd
-import random
-from datetime import datetime, timedelta
 
+# 1. Set a seed for reproducibility
 np.random.seed(42)
 
-# Settings
-n = 50  # number of patients
-mean_sbp = 122  # shifted slightly to test significance
-std_dev = 5
+# 2. Parameters for synthetic data
+num_patients = 50            # Number of patients
+true_mean_sbp = 121          # Simulated average SBP (mmHg)
+std_dev_sbp = 5              # Standard deviation of SBP
 
-# Generate synthetic SBP readings
-sbp = np.random.normal(loc=mean_sbp, scale=std_dev, size=n).round(1)
+# 3. Generate synthetic SBP values
+sbp_values = np.random.normal(loc=true_mean_sbp, scale=std_dev_sbp, size=num_patients).round(1)
 
-# Assign Subject IDs
-subject_ids = [f"CAMIS-PT-{i:03}" for i in range(1, n+1)]
+# 4. Create patient IDs (e.g., CAMIS-PT-001 to CAMIS-PT-050)
+patient_ids = [f"CAMIS-PT-{i:03}" for i in range(1, num_patients + 1)]
 
-# Generate analysis dates (e.g., Oct 1, 2024)
-base_date = datetime(2024, 10, 1)
-analysis_dates = [base_date + timedelta(days=random.randint(0, 5)) for _ in range(n)]
-
-# Create DataFrame in ADaM BDS format
-df = pd.DataFrame({
-    "USUBJID": subject_ids,
-    "PARAMCD": ["SBP"] * n,
-    "PARAM": ["Systolic Blood Pressure"] * n,
-    "AVAL": sbp,
-    "AVALC": sbp.astype(str),
-    "ADT": [d.strftime('%Y-%m-%d') for d in analysis_dates],
-    "ASEQ": list(range(1, n+1)),
-    "ANL01FL": ["Y"] * n
+# 5. Construct the raw dataset
+raw_df = pd.DataFrame({
+    "USUBJID": patient_ids,
+    "SBP": sbp_values
 })
 
-df.head()
+# 6. Preview the data
+print(raw_df.head())
+
+# 7. Optionally: Save to CSV
+raw_df.to_csv("one_sample_ttest_raw_data.csv", index=False)
+
 ```
 
 How To Run One Sample T-Tests In: 
-- Python: `scipy.stats.ttest_1samp(df["AVAL"], popmean=120)`
+- Python: `scipy.stats.ttest_1samp(df["SBP"], popmean=120)`
 - R: `t.test(df$AVAL, mu = 120)`
 - SAS: `PROC TTEST DATA=read H0=120; VAR AVAL; RUN;`
 
