@@ -27,30 +27,30 @@ This following details the design plan for assessing the consistency and accurac
 import numpy as np
 import pandas as pd
 
-# 1. Set a seed for reproducibility
+# set a seed for reproducibility
 np.random.seed(42)
 
-# 2. Parameters for synthetic data
-num_patients = 50            # Number of patients
-true_mean_sbp = 121          # Simulated average SBP (mmHg)
-std_dev_sbp = 5              # Standard deviation of SBP
+# parameters for synthetic data
+num_patients = 50            # number of patients
+true_mean_sbp = 121          # simulated average SBP (mmHg)
+std_dev_sbp = 5              # standard deviation of SBP
 
-# 3. Generate synthetic SBP values
+# generate synthetic SBP values
 sbp_values = np.random.normal(loc=true_mean_sbp, scale=std_dev_sbp, size=num_patients).round(1)
 
-# 4. Create patient IDs (e.g., CAMIS-PT-001 to CAMIS-PT-050)
+# create patient IDs (CAMIS-PT-001 to CAMIS-PT-050)
 patient_ids = [f"CAMIS-PT-{i:03}" for i in range(1, num_patients + 1)]
 
-# 5. Construct the raw dataset
+# construct the raw dataset
 raw_df = pd.DataFrame({
     "USUBJID": patient_ids,
     "SBP": sbp_values
 })
 
-# 6. Preview the data
+# preview the data
 print(raw_df.head())
 
-# 7. Optionally: Save to CSV
+# save to CSV
 raw_df.to_csv("one_sample_ttest_raw_data.csv", index=False)
 
 ```
