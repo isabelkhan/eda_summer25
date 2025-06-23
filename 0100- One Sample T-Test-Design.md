@@ -116,3 +116,7 @@ Compare input and output formatting across R, Python, and SAS and note differenc
 # 8. References 
 - Requirements Analysis for One Sample T-Test: https://github.com/isabelkhan/eda_summer25/blob/main/0100%20One%20Sample%20T-test-%20Requirements%20Analysis.md#inputs 
 - Public Discussion about Tolerance Checks: https://communities.sas.com/t5/SAS-Programming/How-to-check-variables-for-equality-within-tolerance-niether/td-p/234678?utm_source=chatgpt.com 
+- CAMIS Project: https://psiaims.github.io/CAMIS/
+- R `t.test` Documentation: https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test 
+- SAS `PROC TTEST` Documentation: https://documentation.sas.com/doc/en/statug/15.2/statug_ttest_syntax01.htm 
+- Python `scipy.stats.ttest_1samp` Documentation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html 
