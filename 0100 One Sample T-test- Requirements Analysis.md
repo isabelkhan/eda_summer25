@@ -89,7 +89,7 @@ All t-statistics follow a t-distribution with n-1 degrees of freedom
 Use `PROC TTEST` function from `STAT` module. 
 
 ### Package Requirements (SAS)
-'PROC TTEST' is dependent on SAS software
+`PROC TTEST` is dependent on SAS software
 
 ### Inputs (SAS)
 - **Required**: 
@@ -156,7 +156,7 @@ run;
 Use `t.test` from base R `stats` package. 
 
 ### Package Requirements (R)
-'t.test()' is dependent on the 'stats' package which is automatically loaded onto R
+`t.test()` is dependent on the `stats` package which is automatically loaded onto R
 
 ### Inputs (R)
 - **Required**: 
