@@ -89,7 +89,7 @@ All t-statistics follow a t-distribution with n-1 degrees of freedom
 Use `PROC TTEST` function from `STAT` module. 
 
 ### Package Requirements (SAS)
-`PROC TTEST` is dependent on SAS software
+`PROC TTEST` is dependent on SAS software.
 
 ### Inputs (SAS)
 - **Required**: 
@@ -156,7 +156,7 @@ run;
 Use `t.test` from base R `stats` package. 
 
 ### Package Requirements (R)
-`t.test()` is dependent on the `stats` package which is automatically loaded onto R
+`t.test()` is dependent on the `stats` package which is automatically loaded onto R.
 
 ### Inputs (R)
 - **Required**: 
@@ -217,7 +217,7 @@ t.test(read$score, mu = 30)
 Use `scipy.stats.ttest_1samp` from `scipy` package 
 
 ### Package Requirements (Python)
-`scipy.stats.ttest_1samp` is dependent on the 'scipy.stats' Python library, run the command line below for 'scipy.stats' to be installed 
+`scipy.stats.ttest_1samp` is dependent on the `scipy.stats` Python library, run the command line below for `scipy.stats` to be installed.
 
 ```python 
 pip install scipy
