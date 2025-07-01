@@ -12,18 +12,21 @@
 - [Package Implementations](#package-implementations)
   - [SAS (TTEST)](#sas-ttest)
     - [Function/Procedure (SAS)](#functionprocedure-SAS)
+    - [Package Requirements (SAS)](#package-requirements-sas)
     - [Inputs (SAS)](#inputs-SAS)
     - [Outputs (SAS)](#outputs-SAS)
     - [Sample Code (SAS)](#sample-code-SAS)
     - [Limitations/Notes (SAS)](#limitationsnotes-SAS)
   - [R (stats)](#r-stats)
     - [Function/Procedure (R)](#functionprocedure-R)
+    - [Package Requirements (R)](#package-requirements-r)
     - [Inputs (R)](#inputs-R)
     - [Outputs (R)](#outputs-R)
     - [Sample Code (R)](#sample-code-R)
     - [Limitations/Notes (R)](#limitationsnotes-R)
   - [Python (scipy.stats)](#python-scipystats)
     - [Function/Procedure (Python)](#functionprocedure-Python)
+    - [Package Requirements (Python)](#package-requirements-python)
     - [Inputs (Python)](#inputs-Python)
     - [Outputs (Python)](#outputs-python)
     - [Sample Code (Python)](#sample-code-python)
@@ -84,6 +87,9 @@ All t-statistics follow a t-distribution with n-1 degrees of freedom
 
 ### Function/Procedure (SAS) 
 Use `PROC TTEST` function from `STAT` module. 
+
+### Package Requirements (SAS)
+'PROC TTEST' is dependent on SAS software
 
 ### Inputs (SAS)
 - **Required**: 
@@ -149,6 +155,9 @@ run;
 ### Function/Procedure (R)
 Use `t.test` from base R `stats` package. 
 
+### Package Requirements (R)
+'t.test()' is dependent on the 'stats' package which is automatically loaded onto R
+
 ### Inputs (R)
 - **Required**: 
     - `x` (numeric vector of data)
@@ -206,6 +215,13 @@ t.test(read$score, mu = 30)
 
 ### Function/Procedure (Python)
 Use `scipy.stats.ttest_1samp` from `scipy` package 
+
+### Package Requirements (Python)
+`scipy.stats.ttest_1samp` is dependent on the 'scipy.stats' Python library, run the command line below for 'scipy.stats' to be installed 
+
+```python 
+pip install scipy
+```
 
 ### Inputs (Python)
 - **Required**: 
