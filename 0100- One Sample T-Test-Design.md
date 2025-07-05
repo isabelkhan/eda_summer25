@@ -111,6 +111,17 @@ In R, SAS, and Python the dataset, null hypothesis, whether it is a two-sided te
 Compare input and output formatting across R, Python, and SAS and note differences. Compare the numeric output values of the statistic, p-value, CI, degrees of freedom, mean, and standard error across R, Python, and SAS and note if they are greater than the absolute difference thershold specified in parts 2 & 3 of the design outline. 
 
 # 7. Design Notes and Dataset 
+Design Notes: 
+    - The Python, R, and SAS scripts should be able to manually take in what mean is being compared to the dataset for the t-test. 
+    - Define the following target output variables that enforce the Analysis Data Model (ADaM)
+        - USUBJID -> CAMIS-COMP
+        - PARAMCD -> MEAN, SD, TSTAT, and PVALUE 
+        - PARAM -> Mean SBP, SD SBP, t-Statistic, and p-Value
+        - AVAL -> numeric result of Mean SBP, SD SBP, t-Statistic, and p-Value respectively 
+        - AVALC -> character version of AVAL 
+        - ADT -> date of analysis 
+        - ASEQ -> sequence number (1-4)
+        - ANL01FL -> Y
 [one_sample_ttest_raw_data.csv](./one_sample_ttest_raw_data.csv) 
 
 # 8. References 
