@@ -1,0 +1,103 @@
+{
+  "datasetJSONCreationDateTime": "2025-07-04T00:36:51Z",
+  "datasetJSONVersion": "1.1.0",
+  "itemGroupOID": "IG.BDS.SUMMARY",
+  "name": "BDS_SUMMARY",
+  "label": "Summary Statistics BDS",
+  "records": 4,
+  "columns": [
+    {
+      "itemOID": "IT.BDS.USUBJID",
+      "name": "USUBJID",
+      "label": "Subject ID",
+      "dataType": "string",
+      "keySequence": 1
+    },
+    {
+      "itemOID": "IT.BDS.PARAMCD",
+      "name": "PARAMCD",
+      "label": "Parameter Code",
+      "dataType": "string"
+    },
+    {
+      "itemOID": "IT.BDS.PARAM",
+      "name": "PARAM",
+      "label": "Parameter Description",
+      "dataType": "string"
+    },
+    {
+      "itemOID": "IT.BDS.AVAL",
+      "name": "AVAL",
+      "label": "Analysis Value",
+      "dataType": "decimal"
+    },
+    {
+      "itemOID": "IT.BDS.AVALC",
+      "name": "AVALC",
+      "label": "Analysis Value (char)",
+      "dataType": "string"
+    },
+    {
+      "itemOID": "IT.BDS.ADT",
+      "name": "ADT",
+      "label": "Analysis Date",
+      "dataType": "date",
+      "keySequence": 2
+    },
+    {
+      "itemOID": "IT.BDS.ASEQ",
+      "name": "ASEQ",
+      "label": "Analysis Sequence",
+      "dataType": "integer",
+      "keySequence": 3
+    },
+    {
+      "itemOID": "IT.BDS.ANL01FL",
+      "name": "ANL01FL",
+      "label": "Flag analysis 01",
+      "dataType": "string"
+    }
+  ],
+  "rows": [
+    [
+      "CAMIS-PT-001",
+      "MEAN",
+      "Mean SBP",
+      119.87,
+      "119.87",
+      "2025-07-03",
+      1,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-001",
+      "SD",
+      "SD SBP",
+      4.67,
+      "4.67",
+      "2025-07-03",
+      2,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-001",
+      "TSTAT",
+      "t-Statistic",
+      -0.19,
+      "-0.19",
+      "2025-07-03",
+      3,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-001",
+      "PVALUE",
+      "p-Value",
+      0.847,
+      "0.847",
+      "2025-07-03",
+      4,
+      "Y"
+    ]
+  ]
+}

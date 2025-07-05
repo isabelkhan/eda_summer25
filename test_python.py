@@ -1,4 +1,5 @@
 import sys
+import json
 import pandas as pd
 from scipy import stats
 from datetime import datetime
@@ -8,11 +9,11 @@ if len(sys.argv) != 2:
     print("Usage: python test_python.py <reference_mean>")
     sys.exit(1)
 
-# Parse the reference mean from the command line
+# Parse reference mean
 try:
     ref_mean = float(sys.argv[1])
 except ValueError:
-    print("Error: reference_mean must be a number.")
+    print("Error: reference_mean must be numeric.")
     sys.exit(1)
 
 # Load the data
@@ -26,16 +27,37 @@ mean_val = df["SBP"].mean()
 sd_val = df["SBP"].std(ddof=1)
 t_stat, p_val = stats.ttest_1samp(df["SBP"], popmean=ref_mean)
 
-# Build ADaM BDS dataset
-records = [
-    {"USUBJID": "CAMIS-PT-001", "PARAMCD": "MEAN",   "PARAM": "Mean SBP",   "AVAL": round(mean_val,2), "AVALC": f"{round(mean_val,2)}", "ADT": analysis_date, "ASEQ":1, "ANL01FL":"Y"},
-    {"USUBJID": "CAMIS-PT-001", "PARAMCD": "SD",     "PARAM": "SD SBP",     "AVAL": round(sd_val,2),   "AVALC": f"{round(sd_val,2)}",   "ADT": analysis_date, "ASEQ":2, "ANL01FL":"Y"},
-    {"USUBJID": "CAMIS-PT-001", "PARAMCD": "TSTAT",  "PARAM": "t-Statistic","AVAL": round(t_stat,2),   "AVALC": f"{round(t_stat,2)}",   "ADT": analysis_date, "ASEQ":3, "ANL01FL":"Y"},
-    {"USUBJID": "CAMIS-PT-001", "PARAMCD": "PVALUE", "PARAM": "p-Value",    "AVAL": round(p_val,4),    "AVALC": f"{round(p_val,4)}",    "ADT": analysis_date, "ASEQ":4, "ANL01FL":"Y"}
+# Build rows
+rows = [
+    ["CAMIS-PT-001","MEAN","Mean SBP",round(mean_val,2),f"{round(mean_val,2)}",analysis_date,1,"Y"],
+    ["CAMIS-PT-001","SD","SD SBP",round(sd_val,2),f"{round(sd_val,2)}",analysis_date,2,"Y"],
+    ["CAMIS-PT-001","TSTAT","t-Statistic",round(t_stat,2),f"{round(t_stat,2)}",analysis_date,3,"Y"],
+    ["CAMIS-PT-001","PVALUE","p-Value",round(p_val,4),f"{round(p_val,4)}",analysis_date,4,"Y"]
 ]
 
-adam_df = pd.DataFrame(records)
+# Build Dataset-JSON structure
+dataset_json = {
+    "datasetJSONCreationDateTime": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+    "datasetJSONVersion": "1.1.0",
+    "itemGroupOID": "IG.BDS.SUMMARY",
+    "name": "BDS_SUMMARY",
+    "label": "Summary Statistics BDS",
+    "records": len(rows),
+    "columns": [
+        {"itemOID":"IT.BDS.USUBJID","name":"USUBJID","label":"Subject ID","dataType":"string","keySequence":1},
+        {"itemOID":"IT.BDS.PARAMCD","name":"PARAMCD","label":"Parameter Code","dataType":"string"},
+        {"itemOID":"IT.BDS.PARAM","name":"PARAM","label":"Parameter Description","dataType":"string"},
+        {"itemOID":"IT.BDS.AVAL","name":"AVAL","label":"Analysis Value","dataType":"decimal"},
+        {"itemOID":"IT.BDS.AVALC","name":"AVALC","label":"Analysis Value (char)","dataType":"string"},
+        {"itemOID":"IT.BDS.ADT","name":"ADT","label":"Analysis Date","dataType":"date","keySequence":2},
+        {"itemOID":"IT.BDS.ASEQ","name":"ASEQ","label":"Analysis Sequence","dataType":"integer","keySequence":3},
+        {"itemOID":"IT.BDS.ANL01FL","name":"ANL01FL","label":"Flag analysis 01","dataType":"string"}
+    ],
+    "rows": rows
+}
 
-# Output CSV
-adam_df.to_csv("adam_bds_python.csv", index=False)
-print(adam_df)
+# Write JSON file
+with open("adam_bds_python.json", "w") as f:
+    json.dump(dataset_json, f, indent=2)
+
+print("Dataset-JSON v1.1 file created: adam_bds_python.json")
