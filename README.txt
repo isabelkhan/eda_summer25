@@ -68,9 +68,9 @@ Python Version:
 
 Python Packages:
 ----------------
-- pandas
-- scipy
-- numpy
+- pandas (2.3.0 was used for testing)
+- scipy (1.16.0 was used for testing)
+- numpy (1.26.4 was used for testing)
 
 To install:
 ------------
@@ -88,9 +88,9 @@ R Version:
 
 R Packages:
 -----------
-- dplyr
-- readr
-- jsonlite
+- dplyr (1.1.4 was used for testing)
+- readr (2.1.5 was used for testing)
+- jsonlite (1.8.9 was used for testing)
 
 To install:
 ------------
