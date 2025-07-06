@@ -113,6 +113,7 @@ Compare input and output formatting across R, Python, and SAS and note differenc
 # 7. Design Notes and Dataset 
 Design Notes: 
     - The Python, R, and SAS scripts should be able to manually take in what mean is being compared to the dataset for the t-test. 
+    - The input dataset should have a column of numbers to be used for comparison and the reference mean can be manually inputted and adjusted for each t-test run.
     - Define the following target output variables that enforce the Analysis Data Model (ADaM)
         - USUBJID -> CAMIS-PT-COMP
         - PARAMCD -> MEAN, SD, SE, DF, TSTAT, PVALUE, CILOW, and CIHIGH

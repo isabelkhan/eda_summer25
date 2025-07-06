@@ -7,17 +7,18 @@ library(jsonlite)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check arguments
-if (length(args) != 5) {
+if (length(args) != 6) {
   stop(
     paste(
       "Usage:\n",
-      "Rscript test_r.R <reference_mean> <alpha> <sidedness> <dataset_title> <input_filename>\n\n",
+      "Rscript test_r.R <reference_mean> <alpha> <sidedness> <dataset_title> <input_filename> <column_name>\n\n",
       "Arguments:\n",
       "  reference_mean: numeric target mean\n",
       "  alpha: significance level (e.g., 0.05)\n",
-      "  sidedness: 'one' or 'two'\n",
+      "  sidedness: 'two', 'upper', or 'lower'\n",
       "  dataset_title: quoted string label\n",
-      "  input_filename: CSV file with data\n"
+      "  input_filename: CSV file with data\n",
+      "  column_name: column to analyze\n"
     )
   )
 }
@@ -34,51 +35,65 @@ if (is.na(alpha) || alpha <= 0 || alpha >= 1) {
 }
 
 sidedness <- tolower(args[3])
-if (!(sidedness %in% c("one", "two"))) {
-  stop("Error: sidedness must be 'one' or 'two'.")
+if (!(sidedness %in% c("two", "upper", "lower"))) {
+  stop("Error: sidedness must be 'two', 'upper', or 'lower'.")
 }
 
 dataset_title <- args[4]
 input_filename <- args[5]
+column_name <- args[6]
 
 # Read the data
 df <- read_csv(input_filename)
+
+# Validate column exists
+if (!(column_name %in% names(df))) {
+  stop(paste("Error: column '", column_name, "' not found in the dataset.\nAvailable columns: ", paste(names(df), collapse=", ")))
+}
+
+# Extract the column
+values <- df[[column_name]]
+values <- values[!is.na(values)]
 
 # Analysis date
 analysis_date <- Sys.Date()
 
 # Compute statistics
-mean_val <- mean(df$SBP)
-sd_val <- sd(df$SBP)
-n <- length(df$SBP)
+mean_val <- mean(values)
+sd_val <- sd(values)
+n <- length(values)
 dfree <- n - 1
 stderr <- sd_val / sqrt(n)
 
-# t-statistic and p-value
-ttest_res <- t.test(df$SBP, mu = ref_mean)
+# Compute t-statistic and p-value
+ttest_res <- t.test(values, mu = ref_mean)
 
-# Adjust p-value for one-sided test
-if (sidedness == "one") {
-  p_val <- ttest_res$p.value / 2
-} else {
+# Adjust p-value
+if (sidedness == "two") {
   p_val <- ttest_res$p.value
+} else {
+  p_val <- ttest_res$p.value / 2
 }
 
-# Compute confidence intervals
-if (sidedness == "one") {
+# Compute t critical and confidence intervals
+if (sidedness == "two") {
+  t_crit <- qt(1 - alpha / 2, dfree)
+  ci_low <- mean_val - t_crit * stderr
+  ci_high <- mean_val + t_crit * stderr
+} else if (sidedness == "upper") {
   t_crit <- qt(1 - alpha, dfree)
   ci_low <- mean_val - t_crit * stderr
   ci_high <- NA
-} else {
-  t_crit <- qt(1 - alpha / 2, dfree)
-  ci_low <- mean_val - t_crit * stderr
+} else {  # 'lower'
+  t_crit <- qt(1 - alpha, dfree)
+  ci_low <- NA
   ci_high <- mean_val + t_crit * stderr
 }
 
 # Build rows (list of vectors)
 rows <- list(
-  list("CAMIS-PT-COMP","MEAN","Mean SBP",round(mean_val,2),as.character(round(mean_val,2)),as.character(analysis_date),1,"Y"),
-  list("CAMIS-PT-COMP","SD","SD SBP",round(sd_val,2),as.character(round(sd_val,2)),as.character(analysis_date),2,"Y"),
+  list("CAMIS-PT-COMP","MEAN",paste0("Mean ", column_name),round(mean_val,2),as.character(round(mean_val,2)),as.character(analysis_date),1,"Y"),
+  list("CAMIS-PT-COMP","SD",paste0("SD ", column_name),round(sd_val,2),as.character(round(sd_val,2)),as.character(analysis_date),2,"Y"),
   list("CAMIS-PT-COMP","SE","Standard Error",round(stderr,4),as.character(round(stderr,4)),as.character(analysis_date),3,"Y"),
   list("CAMIS-PT-COMP","DF","Degrees of Freedom",dfree,as.character(dfree),as.character(analysis_date),4,"Y"),
   list("CAMIS-PT-COMP","TSTAT","t-Statistic",round(ttest_res$statistic,4),as.character(round(ttest_res$statistic,4)),as.character(analysis_date),5,"Y"),
@@ -91,9 +106,13 @@ if (sidedness == "two") {
     list("CAMIS-PT-COMP","CILOW","Lower CI Bound",round(ci_low,4),as.character(round(ci_low,4)),as.character(analysis_date),7,"Y"),
     list("CAMIS-PT-COMP","CIHIGH","Upper CI Bound",round(ci_high,4),as.character(round(ci_high,4)),as.character(analysis_date),8,"Y")
   ))
-} else {
+} else if (sidedness == "upper") {
   rows <- append(rows, list(
     list("CAMIS-PT-COMP","CILOW","Lower CI Bound",round(ci_low,4),as.character(round(ci_low,4)),as.character(analysis_date),7,"Y")
+  ))
+} else {  # 'lower'
+  rows <- append(rows, list(
+    list("CAMIS-PT-COMP","CIHIGH","Upper CI Bound",round(ci_high,4),as.character(round(ci_high,4)),as.character(analysis_date),7,"Y")
   ))
 }
 
@@ -123,7 +142,7 @@ write_json(dataset_json, "adam_bds_r.json", pretty = TRUE, auto_unbox = TRUE)
 
 # Also build ADaM BDS dataset for CSV
 paramcd_list <- c("MEAN", "SD", "SE", "DF", "TSTAT", "PVALUE")
-param_list <- c("Mean SBP", "SD SBP", "Standard Error", "Degrees of Freedom", "t-Statistic", "p-Value")
+param_list <- c(paste0("Mean ", column_name), paste0("SD ", column_name), "Standard Error", "Degrees of Freedom", "t-Statistic", "p-Value")
 aval_list <- c(
   round(mean_val,2),
   round(sd_val,2),
@@ -137,10 +156,14 @@ if (sidedness == "two") {
   paramcd_list <- c(paramcd_list, "CILOW", "CIHIGH")
   param_list <- c(param_list, "Lower CI Bound", "Upper CI Bound")
   aval_list <- c(aval_list, round(ci_low,4), round(ci_high,4))
-} else {
+} else if (sidedness == "upper") {
   paramcd_list <- c(paramcd_list, "CILOW")
   param_list <- c(param_list, "Lower CI Bound")
   aval_list <- c(aval_list, round(ci_low,4))
+} else {
+  paramcd_list <- c(paramcd_list, "CIHIGH")
+  param_list <- c(param_list, "Upper CI Bound")
+  aval_list <- c(aval_list, round(ci_high,4))
 }
 
 adam_df <- tibble(
