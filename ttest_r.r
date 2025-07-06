@@ -7,16 +7,17 @@ library(jsonlite)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check arguments
-if (length(args) != 4) {
+if (length(args) != 5) {
   stop(
     paste(
       "Usage:\n",
-      "Rscript test_r.R <reference_mean> <alpha> <sidedness> <dataset_title>\n\n",
+      "Rscript test_r.R <reference_mean> <alpha> <sidedness> <dataset_title> <input_filename>\n\n",
       "Arguments:\n",
       "  reference_mean: numeric target mean\n",
       "  alpha: significance level (e.g., 0.05)\n",
       "  sidedness: 'one' or 'two'\n",
-      "  dataset_title: quoted string label\n"
+      "  dataset_title: quoted string label\n",
+      "  input_filename: CSV file with data\n"
     )
   )
 }
@@ -38,9 +39,10 @@ if (!(sidedness %in% c("one", "two"))) {
 }
 
 dataset_title <- args[4]
+input_filename <- args[5]
 
 # Read the data
-df <- read_csv("one_sample_ttest_raw_data.csv")
+df <- read_csv(input_filename)
 
 # Analysis date
 analysis_date <- Sys.Date()

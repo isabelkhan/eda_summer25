@@ -17,7 +17,7 @@ usage_msg = (
     "  input_filename: CSV file with data\n"
 )
 
-# Check arguments
+# Check there's a correct number of arguments
 if len(sys.argv) != 6:
     print(usage_msg)
     sys.exit(1)

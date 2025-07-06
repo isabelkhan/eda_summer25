@@ -114,13 +114,13 @@ Compare input and output formatting across R, Python, and SAS and note differenc
 Design Notes: 
     - The Python, R, and SAS scripts should be able to manually take in what mean is being compared to the dataset for the t-test. 
     - Define the following target output variables that enforce the Analysis Data Model (ADaM)
-        - USUBJID -> CAMIS-COMP
-        - PARAMCD -> MEAN, SD, TSTAT, and PVALUE 
-        - PARAM -> Mean SBP, SD SBP, t-Statistic, and p-Value
-        - AVAL -> numeric result of Mean SBP, SD SBP, t-Statistic, and p-Value respectively 
+        - USUBJID -> CAMIS-PT-COMP
+        - PARAMCD -> MEAN, SD, SE, DF, TSTAT, PVALUE, CILOW, and CIHIGH
+        - PARAM -> Mean SBP, SD SBP, Standard Error, Degrees of Freedom, t-Statistic, p-Value, Lower CI Bound, and Upper CI Bound
+        - AVAL -> numeric result of Mean SBP, SD SBP, Standard Error, Degrees of Freedom, t-Statistic, p-Value, Lower CI Bound, and Upper CI Bound respectively 
         - AVALC -> character version of AVAL 
         - ADT -> date of analysis 
-        - ASEQ -> sequence number (1-4)
+        - ASEQ -> sequence number (1-8)
         - ANL01FL -> Y
 [one_sample_ttest_raw_data.csv](./one_sample_ttest_raw_data.csv) 
 
