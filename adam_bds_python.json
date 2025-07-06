@@ -1,10 +1,10 @@
 {
-  "datasetJSONCreationDateTime": "2025-07-04T00:36:51Z",
+  "datasetJSONCreationDateTime": "2025-07-06T19:12:22Z",
   "datasetJSONVersion": "1.1.0",
   "itemGroupOID": "IG.BDS.SUMMARY",
   "name": "BDS_SUMMARY",
-  "label": "Summary Statistics BDS",
-  "records": 4,
+  "label": "Summary Statistics SBP",
+  "records": 8,
   "columns": [
     {
       "itemOID": "IT.BDS.USUBJID",
@@ -60,43 +60,83 @@
   ],
   "rows": [
     [
-      "CAMIS-PT-001",
+      "CAMIS-PT-COMP",
       "MEAN",
       "Mean SBP",
       119.87,
       "119.87",
-      "2025-07-03",
+      "2025-07-06",
       1,
       "Y"
     ],
     [
-      "CAMIS-PT-001",
+      "CAMIS-PT-COMP",
       "SD",
       "SD SBP",
       4.67,
       "4.67",
-      "2025-07-03",
+      "2025-07-06",
       2,
       "Y"
     ],
     [
-      "CAMIS-PT-001",
-      "TSTAT",
-      "t-Statistic",
-      -0.19,
-      "-0.19",
-      "2025-07-03",
+      "CAMIS-PT-COMP",
+      "SE",
+      "Standard Error",
+      0.6601,
+      "0.6601",
+      "2025-07-06",
       3,
       "Y"
     ],
     [
-      "CAMIS-PT-001",
+      "CAMIS-PT-COMP",
+      "DF",
+      "Degrees of Freedom",
+      49,
+      "49",
+      "2025-07-06",
+      4,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-COMP",
+      "TSTAT",
+      "t-Statistic",
+      -0.1939,
+      "-0.1939",
+      "2025-07-06",
+      5,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-COMP",
       "PVALUE",
       "p-Value",
       0.847,
       "0.847",
-      "2025-07-03",
-      4,
+      "2025-07-06",
+      6,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-COMP",
+      "CILOW",
+      "Lower CI Bound",
+      118.5455,
+      "118.5455",
+      "2025-07-06",
+      7,
+      "Y"
+    ],
+    [
+      "CAMIS-PT-COMP",
+      "CIHIGH",
+      "Upper CI Bound",
+      121.1985,
+      "121.1985",
+      "2025-07-06",
+      8,
       "Y"
     ]
   ]
